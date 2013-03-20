@@ -5,12 +5,23 @@
 *.war
 *.ear
 
+<<<<<<< HEAD
 /au
 /bin
 /gson
 /src/.DS_Store
+=======
+au/
+bin/
+gson/
+src/.DS_Store
+>>>>>>> Update .gitignore
 JavaCodingTest.docx
 ~$JavaCodingTestData.xlsx
 .DS_Store 
 .classpath 
+<<<<<<< HEAD
 .project
+=======
+.project
+>>>>>>> Update .gitignore
