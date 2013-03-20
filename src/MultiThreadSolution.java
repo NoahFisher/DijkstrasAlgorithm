@@ -18,14 +18,15 @@ public class MultiThreadSolution {
 		for (int i = 0; i < rumorData.rumors.length; i++) {
 			// System.out.println(rumorData.rumors[i] + "\n");
 
-			if (graph.network.containsKey(rumorData.rumors[i].getGossiper())
-					&& graph.network.containsValue(rumorData.rumors[i]
-							.getVictim())) {
-				// the starting condition is met and someone talks to the
-				// victim, a solution *may* exist
-			} else {
-				// no solution exists
-			}
+//			if (graph.network.containsKey(rumorData.rumors[i].getGossiper())
+//					&& graph.network.containsValue(rumorData.rumors[i]
+//							.getVictim())) {
+//				// the starting condition is met and someone talks to the
+//				// victim, a solution *may* exist
+//			} else {
+//				// no solution exists
+//			}
+
 			Runnable task = new Dijkstra(graph, rumorData.rumors[i]);
 			Thread worker = new Thread(task);
 

@@ -16,9 +16,8 @@ public class ParseInputJSONString {
 	public void setRumorData(String json) {
 		this.rumorData = new Gson().fromJson(json, RumorDataParser.class);
 
-		// if not an array, need to add tests to recover if json string not
-		// formatted correctly
-		// System.out.println(rumorData.rumors instanceof RumorData[]);
+		// need to add tests to recover if json string not formatted correctly
+		// System.out.println(rumorData.rumors instanceof RumorData[]); <-- test
 	}
 
 }
