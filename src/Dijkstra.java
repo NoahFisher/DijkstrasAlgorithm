@@ -24,7 +24,7 @@ public class Dijkstra implements Runnable {
 
 		this.g = g;
 
-		//initialize inputs
+		// initialize inputs
 		this.n = new Node(talker, false, 0);
 		nodeList.add(this.n);
 
@@ -68,7 +68,6 @@ public class Dijkstra implements Runnable {
 		}
 
 		nextNode.notVisited = false;
-//		g.network.removeAll(currentNode.listener); // Remove from search path. 
 
 		if (!nextNode.listener.equals(victim)) {
 			algorithm(nextNode);

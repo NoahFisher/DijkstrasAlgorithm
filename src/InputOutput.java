@@ -1,49 +1,28 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import com.google.gson.Gson;
+import com.google.gson.stream.MalformedJsonException;
 
 public class InputOutput {
 
-	private ParseInputJSONString json;
+	ParseInputJSONString json;
 	private MultiThreadSolution sol;
 
-	// public static void main(String[] args) {
 	public String main(String json) {
-		// Input format
-		// String json =
-		// "{ rumors: [ {'rumorID' : int, 'gossiper': string, 'victim': string
-		// },
-		// {'rumorID' : int, 'gossiper': string, 'victim': string }...] } ";
 
-		try {
-			setJson(json);
-		} catch (Exception e) {
+		this.json = new ParseInputJSONString(json);
 
-		}
+		this.sol = new MultiThreadSolution(this.json.getRumorData());
 
-		try {
-			// create and run threads
-			this.sol = new MultiThreadSolution(this.json.getRumorData());
-		} catch (Exception e) {
+		String s = setOutputJson(sol);
 
-		}
-
-		try {
-			String s = setOutputJson(sol);
-
-
-			// System.out.println(gson.toJson(jsonOutput));
-//			return gson.toJson(jsonOutput);
-			return s;
-		} catch (Exception e) {
-
-		}
-		return "Failure";
+		return s;
 
 	}
 
-	private String setOutputJson(MultiThreadSolution sol2) {
+	private String setOutputJson(MultiThreadSolution sol) {
 		// map output to json object
 		ArrayList<HashMap<String, Integer>> jsonOutput = new ArrayList<HashMap<String, Integer>>();
 
@@ -56,21 +35,19 @@ public class InputOutput {
 			map.put("rumorTravelTime", rumor.shortestPath);
 
 			jsonOutput.add(map);
-
 		}
 
+		HashMap<String, ArrayList<HashMap<String, Integer>>> jsonOutput2 = 
+				new HashMap<String, ArrayList<HashMap<String, Integer>>>();
+
+		 jsonOutput2.put("rumors", jsonOutput);
+
 		Gson gson = new Gson();
-		return gson.toJson(jsonOutput);
+		return gson.toJson(jsonOutput2);
 	}
 
 	public ParseInputJSONString getJson() {
 		return json;
-	}
-
-	public void setJson(String jsonString) {
-		// create Json object
-		ParseInputJSONString json = new ParseInputJSONString(jsonString);
-		this.json = json;
 	}
 
 }

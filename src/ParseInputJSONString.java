@@ -5,15 +5,20 @@ public class ParseInputJSONString {
 
 	public ParseInputJSONString(String json) {
 
-		try {
-			this.rumorData = new Gson().fromJson(json, RumorDataParser.class);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		setRumorData(json);
+
 	}
 
 	public RumorDataParser getRumorData() {
 		return rumorData;
+	}
+
+	public void setRumorData(String json) {
+		this.rumorData = new Gson().fromJson(json, RumorDataParser.class);
+
+		// if not an array, need to add tests to recover if json string not
+		// formatted correctly
+		// System.out.println(rumorData.rumors instanceof RumorData[]);
 	}
 
 }
