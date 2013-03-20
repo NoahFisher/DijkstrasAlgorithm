@@ -1,0 +1,16 @@
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+/au
+/bin
+/gson
+/src/.DS_Store
+JavaCodingTest.docx
+~$JavaCodingTestData.xlsx
+.DS_Store 
+.classpath 
+.project
